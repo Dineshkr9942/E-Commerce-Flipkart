@@ -80,9 +80,9 @@ class _productPageState extends State<productPage>
     if (cart.contains(productId.toString())) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text("Item already added to cart"),
+          content: const Text("Item already added to cart"),
           backgroundColor: Colors.black,
-          duration: Duration(seconds: 2),
+          duration: const Duration(seconds: 2),
         ),
       );
       return;
@@ -101,10 +101,10 @@ class _productPageState extends State<productPage>
     });
 
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text("Item added to cart"),
+      const SnackBar(
+        content: const Text("Item added to cart"),
         backgroundColor: Colors.green,
-        duration: Duration(seconds: 2),
+        duration: const Duration(seconds: 2),
       ),
     );
   }
@@ -182,13 +182,13 @@ class _productPageState extends State<productPage>
         leading: IconButton(onPressed: (){
           Navigator.pop(context);
         },
-          icon: Icon(Icons.arrow_back),),
+          icon: const Icon(Icons.arrow_back),),
         title: SizedBox(height: 40,width: 320,
           child: TextFormField(
             decoration: InputDecoration(
               filled:  true,
               labelText: "Search Products",
-              prefixIcon: Icon(Icons.search),
+              prefixIcon: const Icon(Icons.search),
               border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20)
               ),
@@ -214,21 +214,21 @@ class _productPageState extends State<productPage>
                   await loadCartState();
                   isNavigatingToCart = false;
                 },
-                icon: Icon(Icons.shopping_cart_outlined),
+                icon: const Icon(Icons.shopping_cart_outlined),
               ),
               if (newCartCount > 0)
                 Positioned(
                   right: 6,
                   top: 6,
                   child: Container(
-                    padding: EdgeInsets.all(5),
+                    padding: const EdgeInsets.all(5),
                     decoration: BoxDecoration(
                       color: Colors.red,
                       shape: BoxShape.circle,
                     ),
                     child: Text(
                       newCartCount.toString(),
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
@@ -242,7 +242,7 @@ class _productPageState extends State<productPage>
       ),
       body: FutureBuilder(future: f1, builder: (context,snapshot) {
         if(snapshot.connectionState==ConnectionState.waiting){
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
         else if(snapshot.hasError){
           return Text("Error : ${snapshot.error}");
@@ -298,7 +298,7 @@ class _productPageState extends State<productPage>
                             ),
                             IconButton(
                               onPressed: () {},
-                              icon: Icon(Icons.share_outlined),
+                              icon: const Icon(Icons.share_outlined),
                             ),
                           ],
                         ),
@@ -312,39 +312,44 @@ class _productPageState extends State<productPage>
                     position: currentIndex.toDouble(),
                   )
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 Row(
-                  children: [SizedBox(width: 10,),
-                    Text(products['title'],style: TextStyle(
+                  children: [
+                    const SizedBox(width: 10,),
+                    Text(products['title'],style: const TextStyle(
                         fontSize: 20,fontWeight: FontWeight.bold
                     ),),
                   ],
                 ),
-                SizedBox(height: 3,),
+                const SizedBox(height: 3,),
                 Row(
-                  children: [SizedBox(width: 10,),
+                  children: [
+                    const SizedBox(width: 10,),
                     Text("Brand : ( ${products["brand"] ?? "No Mention"} )",style: TextStyle(
                         fontSize: 15,fontWeight: FontWeight.bold,color: Colors.red.shade300
                     ),),
                   ],
                 ),
-                SizedBox(height: 5,),
+                const SizedBox(height: 5,),
                 Row(
-                  children: [SizedBox(width: 10,),
-                    Text("Category : ( ${products["category"] ?? "No Category"} )",style: TextStyle(
+                  children: [
+                    const SizedBox(width: 10,),
+                    Text("Category : ( ${products["category"] ?? "No Category"} )",style: const TextStyle(
                         fontSize: 15,fontWeight: FontWeight.bold
                     ),),
                   ],
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 Row(
-                  children: [SizedBox(width: 10,),
+                  children: [
+                    const SizedBox(width: 10,),
                     Expanded(child: Text(products['description']))
                   ],
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 Row(
-                  children: [SizedBox(width: 10,),
+                  children: [
+                    const SizedBox(width: 10,),
                     Container(
                       height: 50,
                       width: 70,
@@ -352,41 +357,42 @@ class _productPageState extends State<productPage>
                           image: DecorationImage(image: NetworkImage("https://tse1.mm.bing.net/th/id/OIP.2gahiWSZ4a_tSv-WI-yjmgHaE7?w=2000&h=1333&rs=1&pid=ImgDetMain&o=7&rm=3"))
                       ),
                     ),
-                    SizedBox(width: 10,),
+                    const SizedBox(width: 10,),
                     Text("Unbeatable deal",style: TextStyle(
                         color: Colors.yellow.shade900,fontSize: 20
                     ),)
                   ],
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 Row(
                   children: [
-                    SizedBox(width: 10),
-                    Icon(Icons.arrow_downward, size: 30, color: Colors.green),
+                    const SizedBox(width: 10),
+                    const Icon(Icons.arrow_downward, size: 30, color: Colors.green),
                     Text("$discountPercent %",
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 25,
                             color: Colors.green,
                             fontWeight: FontWeight.bold)),
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     Text("₹ ${originalPrice.toStringAsFixed(0)}",
-                        style: TextStyle(
+                        style: const TextStyle(
                             decoration: TextDecoration.lineThrough,
                             color: Colors.grey,
                             fontSize: 25)),
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     Text("₹ $price",
-                        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                        style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
                   ],
                 ),
-                SizedBox(height: 20,),
-                Divider(),
+                const SizedBox(height: 20,),
+                const Divider(),
 // Star Rating
                 Row(
-                  children: [SizedBox(width: 10,),
+                  children: [
+                    const SizedBox(width: 10,),
                     Column(
                       children: [
-                        Text("--- Overall Star Rating ---",
+                        const Text("--- Overall Star Rating ---",
                           style: TextStyle(fontSize: 17,color: Colors.deepOrange),),
                         SizedBox(height: 10,),
                         Row(
@@ -397,66 +403,67 @@ class _productPageState extends State<productPage>
                                 itemSize: 27,
                                 itemBuilder: (context,int index)=>Icon(Icons.star,color: Colors.green,)
                             ),
-                            SizedBox(width: 5,),
+                            const SizedBox(width: 5,),
                             Text("( ${products["rating"].toString()} rating)",
-                              style: TextStyle(fontWeight: FontWeight.bold),),
+                              style: const TextStyle(fontWeight: FontWeight.bold),),
                           ],
                         ),
                       ],
                     ),
-                    SizedBox(width: 10,),
+                    const SizedBox(width: 10,),
                   ],
                 ),
-                SizedBox(height: 10,),
-                Divider(),
+                const SizedBox(height: 10,),
+                const Divider(),
 // Product Details
                 Row(
-                  children: [SizedBox(width: 10,),
-                    Text("Product Details :",
-                      style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.deepOrange),),
+                  children: [
+                    const SizedBox(width: 10,),
+                    const Text("Product Details :",
+                      style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.deepOrange),),
                   ],
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 Row(children: [
-                  SizedBox(width: 10,),
-                  Text("Warranty Period : ",
-                    style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
+                  const SizedBox(width: 10,),
+                  const Text("Warranty Period : ",
+                    style: const TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
                   Text(products["warrantyInformation"]?.toString() ?? "No warranty info",
-                    style: TextStyle(fontSize: 17),)
+                    style: const TextStyle(fontSize: 17),)
                 ],),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 Row(children: [
-                  SizedBox(width: 10,),
-                  Text("Shipping : ",
-                    style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
+                  const SizedBox(width: 10,),
+                  const Text("Shipping : ",
+                    style: const TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
                   Text(products["shippingInformation"]?.toString() ?? "No shipping info",
-                    style: TextStyle(fontSize: 17),)
+                    style: const TextStyle(fontSize: 17),)
                 ],),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 Row(children: [
-                  SizedBox(width: 10,),
-                  Text("Availability : ",
-                    style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
+                  const SizedBox(width: 10,),
+                  const Text("Availability : ",
+                    style: const TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
                   Text(products["availabilityStatus"]?.toString() ?? "No availability info",
-                    style: TextStyle(fontSize: 17),)
+                    style: const TextStyle(fontSize: 17),)
                 ],),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 Row(children: [
-                  SizedBox(width: 10,),
-                  Text("Return Policy : ",
-                    style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
+                  const SizedBox(width: 10,),
+                  const Text("Return Policy : ",
+                    style: const TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
                   Text(products["returnPolicy"]?.toString() ?? "No return info",
-                    style: TextStyle(fontSize: 17),)
+                    style: const TextStyle(fontSize: 17),)
                 ],),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 Row(children: [
-                  SizedBox(width: 10,),
-                  Text("Minimum Order Quantity : ",
-                    style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
+                  const SizedBox(width: 10,),
+                  const Text("Minimum Order Quantity : ",
+                    style: const TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
                   Text(products["minimumOrderQuantity"]?.toString() ?? "No quantity info",
-                    style: TextStyle(fontSize: 17),)
+                    style: const TextStyle(fontSize: 17),)
                 ],),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 Container(
                   height: 40,
                   width: double.infinity,
@@ -464,31 +471,32 @@ class _productPageState extends State<productPage>
                       color: Colors.grey.shade400,
                       borderRadius: BorderRadius.circular(10)
                   ),
-                  child: Center(child: Text("More Details >",
-                    style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),)),
+                  child: const Center(child: Text("More Details >",
+                    style: const TextStyle(fontSize: 17,fontWeight: FontWeight.bold),)),
                 ),
-                SizedBox(height: 10,),
-                Divider(),
+                const SizedBox(height: 10,),
+                const Divider(),
 // Customer Reviews
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 Row(
-                  children: [SizedBox(width: 10,),
-                    Text("Customer Reviews :",
-                      style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.deepOrange),),
+                  children: [
+                    const SizedBox(width: 10,),
+                    const Text("Customer Reviews :",
+                      style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.deepOrange),),
                   ],
                 ),
                 reviews.isEmpty
-                    ? Padding(
+                    ? const Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text(
+                  child: const Text(
                     "No reviews available",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 )
                     : ListView.builder(
                   itemCount: reviews.length,
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
                     final r = reviews[index];
                     return ListTile(
@@ -497,35 +505,35 @@ class _productPageState extends State<productPage>
                         children: [
                           Row(
                             children: [
-                              CircleAvatar(child: Icon(Icons.person)),
-                              SizedBox(width: 8),
+                              const CircleAvatar(child: const Icon(Icons.person)),
+                              const SizedBox(width: 8),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(r['reviewerName'] ?? "User",
-                                      style: TextStyle(fontWeight: FontWeight.bold)),
+                                      style: const TextStyle(fontWeight: FontWeight.bold)),
                                   Text(r['reviewerEmail'] ?? "",
-                                      style: TextStyle(fontSize: 12)),
+                                      style: const TextStyle(fontSize: 12)),
                                 ],
                               ),
                             ],
                           ),
-                          SizedBox(height: 5),
+                          const SizedBox(height: 5),
                           RatingBarIndicator(
                             rating: (r['rating'] ?? 4).toDouble(),
                             itemCount: 5,
                             itemSize: 20,
                             itemBuilder: (_, __) =>
-                                Icon(Icons.star, color: Colors.green),
+                            const Icon(Icons.star, color: Colors.green),
                           ),
-                          SizedBox(height: 5),
+                          const SizedBox(height: 5),
                           Text(r['comment'] ?? "Good product"),
                         ],
                       ),
                     );
                   },
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 Container(
                   height: 40,
                   width: double.infinity,
@@ -533,23 +541,24 @@ class _productPageState extends State<productPage>
                       color: Colors.grey.shade400,
                       borderRadius: BorderRadius.circular(10)
                   ),
-                  child: Center(child: Text("Show More >",
-                    style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),)),
+                  child: const Center(child: const Text("Show More >",
+                    style: const TextStyle(fontSize: 17,fontWeight: FontWeight.bold),)),
                 ),
-                SizedBox(height: 10,),
-                Divider(),
+                const SizedBox(height: 10,),
+                const Divider(),
 // Explore More Items
                 Row(
-                  children: [SizedBox(width: 10,),
-                    Text("Explore More Items :",
-                      style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.deepOrange),),
+                  children: [
+                    const SizedBox(width: 10,),
+                    const Text("Explore More Items :",
+                      style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.deepOrange),),
                   ],
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 SizedBox(height: 560,
                   child: GridView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       childAspectRatio: 0.1/0.1,
                       mainAxisSpacing: 0.1,
@@ -562,7 +571,7 @@ class _productPageState extends State<productPage>
                         padding: const EdgeInsets.all(8.0),
                         child: GestureDetector(
                           onTap: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>categoryPage()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>const categoryPage()));
                           },
                           child: Container(
                             height: 100,
@@ -574,10 +583,10 @@ class _productPageState extends State<productPage>
                     },
                   ),
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 GestureDetector(
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>categoryPage()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>const categoryPage()));
                   },
                   child: Container(
                     height: 40,
@@ -586,8 +595,8 @@ class _productPageState extends State<productPage>
                         color: Colors.green,
                         borderRadius: BorderRadius.circular(10)
                     ),
-                    child: Center(child: Text("View Categories >",
-                      style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold,color: Colors.white),)),
+                    child: const Center(child: const Text("View Categories >",
+                      style: const TextStyle(fontSize: 17,fontWeight: FontWeight.bold,color: Colors.white),)),
                   ),
                 )
               ],
@@ -595,7 +604,7 @@ class _productPageState extends State<productPage>
           );
         }
         else{
-          return Text("No data found");
+          return const Text("No data found");
         }
       }),
       bottomNavigationBar: BottomAppBar(
@@ -619,7 +628,7 @@ class _productPageState extends State<productPage>
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    icon: Icon(Icons.add_shopping_cart_outlined),
+                    icon: const Icon(Icons.add_shopping_cart_outlined),
                   ),
                   if (addedToCart)
                     Positioned(
@@ -630,7 +639,7 @@ class _productPageState extends State<productPage>
                           color: Colors.green,
                           shape: BoxShape.circle,
                         ),
-                        child: Icon(
+                        child: const Icon(
                           Icons.check,
                           color: Colors.white,
                           size: 16,
@@ -652,13 +661,13 @@ class _productPageState extends State<productPage>
                   );
                 },
                   style: ElevatedButton.styleFrom(
-                      fixedSize: Size(140, 40),
+                      fixedSize: const Size(140, 40),
                       backgroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)
                       )
                   ),
-                  child: Text("Buy with EMI")
+                  child: const Text("Buy with EMI")
               ),
               ElevatedButton(
                 onPressed: (){
@@ -673,13 +682,13 @@ class _productPageState extends State<productPage>
                   );
                 },
                   style: ElevatedButton.styleFrom(
-                      fixedSize: Size(140, 40),
+                      fixedSize: const Size(140, 40),
                       backgroundColor: Colors.yellow,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)
                       )
                   ),
-                  child: Text("Buy Now")
+                  child: const Text("Buy Now")
               ),
             ],
           ),

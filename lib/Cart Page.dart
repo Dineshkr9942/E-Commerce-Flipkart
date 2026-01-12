@@ -59,21 +59,21 @@ class _cartPageState extends State<cartPage> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text("Remove item"),
+        title: const Text("Remove item"),
         content: Text("Remove $title from cart?"),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text("Cancel"),
+            child: const Text("Cancel"),
           ),
           TextButton(
             onPressed: () {
               Navigator.pop(context);
               removeFromCart(id);
             },
-            child: Text(
+            child: const Text(
               "Remove",
-              style: TextStyle(color: Colors.red),
+              style: const TextStyle(color: Colors.red),
             ),
           ),
         ],
@@ -128,7 +128,7 @@ class _cartPageState extends State<cartPage> {
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text("Item removed from Cart"),
+        content: const Text("Item removed from Cart"),
         action: SnackBarAction(
           label: "UNDO",
           onPressed: () async {
@@ -171,11 +171,11 @@ class _cartPageState extends State<cartPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue.shade100,
-        title: Text("My Cart"),
+        title: const Text("My Cart"),
         centerTitle: true,
       ),
       body: isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: const CircularProgressIndicator())
           : cartProducts.isEmpty
           ? Center(
         child: Column(
@@ -184,7 +184,7 @@ class _cartPageState extends State<cartPage> {
 // Only Cart is Empty
             TweenAnimationBuilder<double>(
               tween: Tween(begin: 0.8, end: 1.2),
-              duration: Duration(milliseconds: 900),
+              duration: const Duration(milliseconds: 900),
               curve: Curves.easeInOut,
               builder: (context, value, child) {
                 return Transform.scale(
@@ -192,32 +192,32 @@ class _cartPageState extends State<cartPage> {
                   child: child,
                 );
               },
-              child: Icon(
+              child: const Icon(
                 Icons.shopping_cart_outlined,
                 size: 120,
                 color: Colors.grey,
               ),
             ),
-            SizedBox(height: 20),
-            Text(
+            const SizedBox(height: 20),
+            const Text(
               "Your cart is empty",
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 8),
-            Text(
+            const SizedBox(height: 8),
+            const Text(
               "Looks like you haven’t added anything yet",
-              style: TextStyle(color: Colors.grey),
+              style: const TextStyle(color: Colors.grey),
             ),
-            SizedBox(height: 25),
+            const SizedBox(height: 25),
             ElevatedButton.icon(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>homePage()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>const homePage()));
               },
-              icon: Icon(Icons.shopping_bag),
-              label: Text("Start Shopping"),
+              icon: const Icon(Icons.shopping_bag),
+              label: const Text("Start Shopping"),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.yellow,
                 foregroundColor: Colors.black,
@@ -244,7 +244,7 @@ class _cartPageState extends State<cartPage> {
                 color: Colors.red,
                 alignment: Alignment.centerRight,
                 padding: EdgeInsets.only(right: 20),
-                child: Icon(Icons.delete, color: Colors.white),
+                child: const Icon(Icons.delete, color: Colors.white),
               ),
               confirmDismiss: (_) async {
                 confirmDelete(
@@ -284,27 +284,27 @@ class _cartPageState extends State<cartPage> {
                               height: 70,
                               fit: BoxFit.cover,
                             ),
-                            SizedBox(height: 6),
+                            const SizedBox(height: 6),
                             Row(
                               children: [
                                 IconButton(
-                                  icon: Icon(Icons.remove_circle_outline),
+                                  icon: const Icon(Icons.remove_circle_outline),
                                   onPressed: () => decreaseQty(product['id']),
                                 ),
                                 Text(
                                   "${cartQty[product['id']] ?? 1}",
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 16, fontWeight: FontWeight.bold),
                                 ),
                                 IconButton(
-                                  icon: Icon(Icons.add_circle_outline),
+                                  icon: const Icon(Icons.add_circle_outline),
                                   onPressed: () => increaseQty(product['id']),
                                 ),
                               ],
                             ),
                           ],
                         ),
-                        SizedBox(width: 12),
+                        const SizedBox(width: 12),
 // Product Details
                         Expanded(
                           child: Column(
@@ -315,20 +315,20 @@ class _cartPageState extends State<cartPage> {
                                 product['title'],
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 16, fontWeight: FontWeight.bold),
                               ),
-                              SizedBox(height: 6),
+                              const SizedBox(height: 6),
                               Text(
                                 "₹ $totalPrice",
-                                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold,color: Colors.green),
+                                style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold,color: Colors.green),
                               ),
                             ],
                           ),
                         ),
 // Delete
                         IconButton(
-                          icon: Icon(Icons.delete, color: Colors.red),
+                          icon: const Icon(Icons.delete, color: Colors.red),
                           onPressed: () => confirmDelete(
                             product['id'].toString(),
                             product['title'],
@@ -361,13 +361,13 @@ class _cartPageState extends State<cartPage> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "Total Amount",
-                  style: TextStyle(color: Colors.grey),
+                  style: const TextStyle(color: Colors.grey),
                 ),
                 Text(
                   "₹ ${cartTotal.toStringAsFixed(2)}",
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -389,9 +389,9 @@ class _cartPageState extends State<cartPage> {
                 padding:
                 const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
               ),
-              child: Text(
+              child: const Text(
                 "Checkout",
-                style: TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16),
               ),
             ),
           ],

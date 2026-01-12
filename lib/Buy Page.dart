@@ -89,7 +89,7 @@ class _buyPageState extends State<buyPage> {
       "paymentMethod": paymentMethod,
       "isEmi": widget.isEmi,
       "orderDate": DateTime.now().toIso8601String(),
-      "deliveryDate": DateTime.now().add(Duration(days: 7)).toIso8601String(),
+      "deliveryDate": DateTime.now().add(const Duration(days: 7)).toIso8601String(),
       "items": items,
       "status": "Placed",
     };
@@ -106,12 +106,12 @@ class _buyPageState extends State<buyPage> {
         backgroundColor: Colors.blue.shade100,
         leading: IconButton(onPressed: (){
           Navigator.pop(context);
-        }, icon: Icon(Icons.arrow_back)),
-        title: Text("Order Summary"),
+        }, icon: const Icon(Icons.arrow_back)),
+        title: const Text("Order Summary"),
       ),
       body: FutureBuilder(future: f1, builder: (context,snapshot){
         if(snapshot.connectionState == ConnectionState.waiting){
-          return const Center(child: CircularProgressIndicator());
+          return const Center(child: const CircularProgressIndicator());
         }
         else if(snapshot.hasError){
           return Text("Error : ${snapshot.error}");
@@ -138,16 +138,18 @@ class _buyPageState extends State<buyPage> {
 
           return SingleChildScrollView(
             child: Column(
-              children: [SizedBox(height: 10,),
+              children: [
+                const SizedBox(height: 10,),
 // Address
                 Row(
-                  children: [SizedBox(width: 10,),
-                    Text("Delivered to : ",style: TextStyle(
+                  children: [
+                    const SizedBox(width: 10,),
+                    const Text("Delivered to : ",style: const TextStyle(
                         fontSize: 17,fontWeight: FontWeight.bold
                     ),)
                   ],
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 Container(
                   height: 40,
                   width: 300,
@@ -157,15 +159,15 @@ class _buyPageState extends State<buyPage> {
                   ),
                   child: Row(mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.add),
-                      SizedBox(width: 5,),
-                      Text("Add an Address",style: TextStyle(
+                      const Icon(Icons.add),
+                      const SizedBox(width: 5,),
+                      const Text("Add an Address",style: const TextStyle(
                           fontSize: 16
                       ),)
                     ],
                   ),
                 ),
-                SizedBox(height: 5,),
+                const SizedBox(height: 5,),
                 Container(
                   height: 40,
                   width: 300,
@@ -175,26 +177,27 @@ class _buyPageState extends State<buyPage> {
                   ),
                   child: Row(mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.select_all),
-                      SizedBox(width: 5,),
-                      Text("Select an Address",style: TextStyle(
+                      const Icon(Icons.select_all),
+                      const SizedBox(width: 5,),
+                      const Text("Select an Address",style: const TextStyle(
                           fontSize: 16
                       ),)
                     ],
                   ),
                 ),
-                SizedBox(height: 10,),
-                Divider(),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
+                const Divider(),
+                const SizedBox(height: 10,),
 // Product
                 Row(
-                  children: [SizedBox(width: 10,),
-                    Text("Your Selected Product : ",style: TextStyle(
+                  children: [
+                    const SizedBox(width: 10,),
+                    const Text("Your Selected Product : ",style: const TextStyle(
                         fontSize: 17,fontWeight: FontWeight.bold
                     ),)
                   ],
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 InkWell(
                   borderRadius: BorderRadius.circular(12),
                   onTap: () {
@@ -222,46 +225,46 @@ class _buyPageState extends State<buyPage> {
                             Expanded(
                               child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  SizedBox(height: 10,),
-                                  Text(products["title"],style: TextStyle(
+                                  const SizedBox(height: 10,),
+                                  Text(products["title"],style: const TextStyle(
                                       fontWeight: FontWeight.bold,fontSize: 15
                                   ),),
-                                  SizedBox(height: 5,),
+                                  const SizedBox(height: 5,),
                                   Row(
                                     children: [
                                       RatingBarIndicator(
                                           itemCount: 5,
                                           rating: products['rating'],
                                           itemSize: 20,
-                                          itemBuilder: (context,int index)=>Icon(Icons.star,color: Colors.green,)
+                                          itemBuilder: (context,int index)=>const Icon(Icons.star,color: Colors.green,)
                                       ),
-                                      SizedBox(width: 10,),
+                                      const SizedBox(width: 10,),
                                       Text("(${products["rating"].toString()})"),
                                     ],
                                   ),
-                                  SizedBox(height: 5,),
+                                  const SizedBox(height: 5,),
                                   Row(
                                     children: [
-                                      Icon(Icons.arrow_downward,size: 20,color: Colors.green,),
-                                      Text("${products["discountPercentage"].toString()} %",style: TextStyle(
+                                      const Icon(Icons.arrow_downward,size: 20,color: Colors.green,),
+                                      Text("${products["discountPercentage"].toString()} %",style: const TextStyle(
                                           fontSize: 16,color: Colors.green,fontWeight: FontWeight.bold
                                       ),),
-                                      SizedBox(width: 10,),
+                                      const SizedBox(width: 10,),
                                       Text(
                                         "₹ ${originalPrice.toStringAsFixed(0)}",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           decoration: TextDecoration.lineThrough,
                                           color: Colors.grey,
                                           fontSize: 16,
                                         ),
                                       ),
-                                      SizedBox(width: 10,),
-                                      Text("₹ ${products["price"].toString()}",style: TextStyle(
+                                      const SizedBox(width: 10,),
+                                      Text("₹ ${products["price"].toString()}",style: const TextStyle(
                                           fontSize: 16,fontWeight: FontWeight.bold
                                       ),),
                                     ],
                                   ),
-                                  SizedBox(height: 5,),
+                                  const SizedBox(height: 5,),
                                   Row(
                                     children: [
                                       Container(
@@ -276,15 +279,15 @@ class _buyPageState extends State<buyPage> {
                                       ),)
                                     ],
                                   ),
-                                  SizedBox(height: 5,),
+                                  const SizedBox(height: 5,),
                                   Text("Brand : ${products['brand'].toString()}",style: TextStyle(
                                       fontWeight: FontWeight.bold,color: Colors.grey.shade600
                                   ),),
-                                  SizedBox(height: 5,),
-                                  Text("Only left : ${products["stock"]}".toString(),style: TextStyle(
+                                  const SizedBox(height: 5,),
+                                  Text("Only left : ${products["stock"]}".toString(),style: const TextStyle(
                                       color: Colors.grey
                                   ),),
-                                  SizedBox(height: 10,),
+                                  const SizedBox(height: 10,),
                                 ],
                               ),
                             ),
@@ -294,11 +297,11 @@ class _buyPageState extends State<buyPage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
 // Add more
                 GestureDetector(
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>homePage()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>const homePage()));
                   },
                   child: Container(
                     height: 40,
@@ -309,27 +312,28 @@ class _buyPageState extends State<buyPage> {
                     ),
                     child: Row(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.add),
-                        SizedBox(width: 5,),
-                        Text("Add more Items",style: TextStyle(
+                        const Icon(Icons.add),
+                        const SizedBox(width: 5,),
+                        const Text("Add more Items",style: const TextStyle(
                             fontSize: 16
                         ),)
                       ],
                     ),
                   ),
                 ),
-                SizedBox(height: 10,),
-                Divider(),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
+                const Divider(),
+                const SizedBox(height: 10,),
 // Price
                 Row(
-                  children: [SizedBox(width: 10,),
-                    Text("Price Details : ",style: TextStyle(
+                  children: [
+                    const SizedBox(width: 10,),
+                    const Text("Price Details : ",style: const TextStyle(
                         fontSize: 17,fontWeight: FontWeight.bold
                     ),)
                   ],
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 Card(
                   color: Colors.grey.shade200,
                   child: Container(
@@ -338,90 +342,96 @@ class _buyPageState extends State<buyPage> {
                     child: Column(
                       children: [
                         Row(
-                          children: [SizedBox(width: 10,),
+                          children: [
+                            const SizedBox(width: 10,),
                             Padding(
                               padding: const EdgeInsets.all(12.0),
-                              child: Text("Price (item):",style: TextStyle(fontSize: 16),),
+                              child: const Text("Price (item):",style: const TextStyle(fontSize: 16),),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Padding(
                                 padding: const EdgeInsets.all(12.0),
                                 child: Text("₹ ${originalPrice.toStringAsFixed(0)}")
                             ),
-                            SizedBox(width: 10,),
+                            const SizedBox(width: 10,),
                           ],
                         ),
                         Row(
-                          children: [SizedBox(width: 10,),
+                          children: [
+                            const SizedBox(width: 10,),
                             Padding(
                               padding: const EdgeInsets.all(12.0),
-                              child: Text("Discount Percentage :",style: TextStyle(fontSize: 16),),
+                              child: const Text("Discount Percentage :",style: const TextStyle(fontSize: 16),),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Padding(
                               padding: const EdgeInsets.all(12.0),
-                              child: Text("${products["discountPercentage"].toString()} %",style: TextStyle(
+                              child: Text("${products["discountPercentage"].toString()} %",style: const TextStyle(
                                 fontSize: 16,
                               ),),
                             ),
-                            SizedBox(width: 3,),
+                            const SizedBox(width: 3,),
                           ],
                         ),
                         Row(
-                          children: [SizedBox(width: 10,),
+                          children: [
+                            const SizedBox(width: 10,),
                             Padding(
                               padding: const EdgeInsets.all(12.0),
-                              child: Text("Discount Price :",style: TextStyle(fontSize: 16),),
+                              child: const Text("Discount Price :",style: const TextStyle(fontSize: 16),),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Padding(
                               padding: const EdgeInsets.all(12.0),
                               child: Text(
                                 "₹ ${discountAmount.toStringAsFixed(0)}",
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 16,
                                 ),
                               ),
                             ),
-                            SizedBox(width: 10,),
+                            const SizedBox(width: 10,),
                           ],
                         ),
                         Row(
-                          children: [SizedBox(width: 10,),
+                          children: [
+                            const SizedBox(width: 10,),
                             Padding(
                               padding: const EdgeInsets.all(12.0),
-                              child: Text("Total :",style: TextStyle(fontSize: 18),),
+                              child: const Text("Total :",style: const TextStyle(fontSize: 18),),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Padding(
                               padding: const EdgeInsets.all(12.0),
                               child: Text(
                                 "₹ ${products["price"]} /-",
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
-                            SizedBox(width: 10,),
+                            const SizedBox(width: 10,),
                           ],
                         ),
                       ],
                     ),
                   ),
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
 // Coupons
                 Row(
-                  children: [SizedBox(width: 10,),
-                    Text("Apply Coupons : ",style: TextStyle(
+                  children: [
+                    const SizedBox(width: 10,),
+                    const Text("Apply Coupons : ",style: const TextStyle(
                         fontSize: 17,fontWeight: FontWeight.bold
                     ),)
                   ],
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 Row(
-                  children: [SizedBox(width: 70,),
+                  children: [
+                    const SizedBox(width: 70,),
                     SizedBox(
                         height: 40,width: 150,
                         child: TextFormField(
@@ -437,11 +447,11 @@ class _buyPageState extends State<buyPage> {
                       padding: const EdgeInsets.all(8.0),
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
-                          onPressed: (){}, child: Text("Apply",style: TextStyle(color: Colors.black),)),
+                          onPressed: (){}, child: const Text("Apply",style: const TextStyle(color: Colors.black),)),
                     )
                   ],
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 Container(
                   height: 40,
                   width: 300,
@@ -451,15 +461,15 @@ class _buyPageState extends State<buyPage> {
                   ),
                   child: Row(mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.add),
-                      SizedBox(width: 5,),
-                      Text("Apply Coupon for Discount",style: TextStyle(
+                      const Icon(Icons.add),
+                      const SizedBox(width: 5,),
+                      const Text("Apply Coupon for Discount",style: const TextStyle(
                           fontSize: 16
                       ),)
                     ],
                   ),
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 Container(
                   height: 40,
                   width: 300,
@@ -469,31 +479,31 @@ class _buyPageState extends State<buyPage> {
                   ),
                   child: Row(mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.remove),
-                      SizedBox(width: 5,),
-                      Text("Remove Coupon",style: TextStyle(
+                      const Icon(Icons.remove),
+                      const SizedBox(width: 5,),
+                      const Text("Remove Coupon",style: const TextStyle(
                           fontSize: 16
                       ),)
                     ],
                   ),
                 ),
-                SizedBox(height: 10),
-                Divider(),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
+                const Divider(),
+                const SizedBox(height: 10),
 // Payment Methods
                 Row(
                   children: [
-                    SizedBox(width: 10),
-                    Text(
+                    const SizedBox(width: 10),
+                    const Text(
                       "Payment Methods :",
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 17,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
 // Payment Options
                 Column(
                   children: [
@@ -528,7 +538,7 @@ class _buyPageState extends State<buyPage> {
                           child: Row(
                             children: [
                               Icon(item["icon"] as IconData, color: item["color"] as Color),
-                              SizedBox(width: 10),
+                              const SizedBox(width: 10),
                               Text(
                                 item["title"] as String,
                                 style: TextStyle(
@@ -536,8 +546,8 @@ class _buyPageState extends State<buyPage> {
                                   fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
                                 ),
                               ),
-                              Spacer(),
-                              if (isSelected) Icon(Icons.check_circle, color: Colors.green),
+                              const Spacer(),
+                              if (isSelected) const Icon(Icons.check_circle, color: Colors.green),
                             ],
                           ),
                         ),
@@ -545,27 +555,27 @@ class _buyPageState extends State<buyPage> {
                     }).toList(),
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
               ],
             ),
           );
         }
         else{
-          return Text("No data found");
+          return const Text("No data found");
         }
       }),
       bottomNavigationBar: FutureBuilder(
         future: f1,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return SizedBox(
+            return const SizedBox(
               height: 60,
-              child: Center(child: CircularProgressIndicator()),
+              child: const Center(child: const CircularProgressIndicator()),
             );
           } else if (snapshot.hasError) {
-            return SizedBox(
+            return const SizedBox(
               height: 60,
-              child: Center(child: Text("Error")),
+              child: const Center(child: const Text("Error")),
             );
           } else if (snapshot.hasData) {
             final double price = snapshot.data!["price"].toDouble();
@@ -590,7 +600,7 @@ class _buyPageState extends State<buyPage> {
                     if (selectedPayment == -1) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
-                          content: Text("Please select a payment method"),
+                          content: const Text("Please select a payment method"),
                           backgroundColor: Colors.red,
                         ),
                       );
@@ -664,7 +674,7 @@ class _OrderSuccessPageState extends State<OrderSuccessPage> {
   void initState() {
     super.initState();
     _confettiController =
-        ConfettiController(duration: Duration(seconds: 3));
+        ConfettiController(duration: const Duration(seconds: 3));
     _confettiController.play();
 
     orderId = generateOrderId();
@@ -698,29 +708,29 @@ class _OrderSuccessPageState extends State<OrderSuccessPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
+                const   Icon(
                   Icons.check_circle,
                   size: 100,
                   color: Colors.green,
                 ),
-                SizedBox(height: 20),
-                Text(
+                const SizedBox(height: 20),
+                const Text(
                   "Order Placed Successfully!",
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
 // Order ID
                 Text(
                   "Order ID: $orderId",
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
 // Payment Method
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -730,24 +740,24 @@ class _OrderSuccessPageState extends State<OrderSuccessPage> {
                       color: paymentUI[widget.paymentIndex]["color"],
                       size: 24,
                     ),
-                    SizedBox(width: 8),
+                    const SizedBox(width: 8),
                     Text(
                       widget.paymentMethod,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
                   onPressed: () {
                     Navigator.popUntil(
                         context, (route) => route.isFirst);
                   },
-                  child: Text("Continue Shopping",style: TextStyle(color: Colors.black),),
+                  child: const Text("Continue Shopping",style: const TextStyle(color: Colors.black),),
                 ),
               ],
             ),

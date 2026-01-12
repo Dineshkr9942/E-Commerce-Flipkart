@@ -8,7 +8,7 @@ class profilePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
-        title: Text("My Account"),
+        title: const Text("My Account"),
         backgroundColor: Colors.blue.shade100,
         elevation: 0,
       ),
@@ -22,30 +22,30 @@ class profilePage extends StatelessWidget {
                 CircleAvatar(
                   radius: 30,
                   backgroundColor: Colors.white,
-                  child: Icon(Icons.person, size: 35, color: Colors.blue),
+                  child: const Icon(Icons.person, size: 35, color: Colors.blue),
                 ),
-                SizedBox(width: 16),
+                const SizedBox(width: 16),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       "Dinesh KR",
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 4),
-                    Text(
+                    const SizedBox(height: 4),
+                    const Text(
                       "dineshkr9942@gmail.com",
-                      style: TextStyle(color: Colors.black54),
+                      style: const TextStyle(color: Colors.black54),
                     ),
                   ],
                 ),
               ],
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           _profileTile(
             icon: Icons.shopping_bag,
             title: "My Orders",

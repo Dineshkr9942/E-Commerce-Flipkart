@@ -73,8 +73,8 @@ class _homePageState extends State<homePage> {
             decoration: InputDecoration(
                 filled:  true,
                 labelText: "Search Products",
-                prefixIcon: Icon(Icons.search),
-                suffixIcon: Icon(Icons.camera_alt_outlined),
+                prefixIcon: const Icon(Icons.search),
+                suffixIcon: const Icon(Icons.camera_alt_outlined),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20)
                 )
@@ -169,11 +169,11 @@ class _homePageState extends State<homePage> {
                                   Expanded(
                                     child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        SizedBox(height: 10,),
+                                        const SizedBox(height: 10,),
                                         Text(list[index]["title"],style: TextStyle(
                                             fontWeight: FontWeight.bold,fontSize: 15
                                         ),),
-                                        SizedBox(height: 5,),
+                                        const SizedBox(height: 5,),
                                         Row(
                                           children: [
                                             RatingBarIndicator(
@@ -182,32 +182,32 @@ class _homePageState extends State<homePage> {
                                                 itemSize: 20,
                                                 itemBuilder: (context,int index)=>Icon(Icons.star,color: Colors.green,)
                                             ),
-                                            SizedBox(width: 10,),
+                                            const SizedBox(width: 10,),
                                             Text("(${list[index]["rating"].toString()})"),
                                           ],
                                         ),
-                                        SizedBox(height: 5,),
+                                        const SizedBox(height: 5,),
                                         Row(
                                           children: [
-                                            Icon(Icons.arrow_downward,size: 20,color: Colors.green,),
+                                            const Icon(Icons.arrow_downward,size: 20,color: Colors.green,),
                                             Text("${list[index]["discountPercentage"].toString()} %",style: TextStyle(
                                                 fontSize: 16,color: Colors.green,fontWeight: FontWeight.bold
                                             ),),
-                                            SizedBox(width: 10,),
+                                            const SizedBox(width: 10,),
                                             Text(
                                               "₹ ${originalPrice.toStringAsFixed(0)}",
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 decoration: TextDecoration.lineThrough,
                                                 color: Colors.grey,
                                               ),
                                             ),
-                                            SizedBox(width: 10,),
+                                            const SizedBox(width: 10,),
                                             Text("₹ ${list[index]["price"].toString()}",style: TextStyle(
                                                 fontSize: 16,fontWeight: FontWeight.bold
                                             ),),
                                           ],
                                         ),
-                                        SizedBox(height: 5,),
+                                        const SizedBox(height: 5,),
                                         Row(
                                           children: [
                                             Container(
@@ -222,15 +222,15 @@ class _homePageState extends State<homePage> {
                                             ),)
                                           ],
                                         ),
-                                        SizedBox(height: 5,),
+                                        const SizedBox(height: 5,),
                                         Text("Brand : ${list[index]['brand'].toString()}",style: TextStyle(
                                             fontWeight: FontWeight.bold,color: Colors.grey.shade600
                                         ),),
-                                        SizedBox(height: 5,),
+                                        const SizedBox(height: 5,),
                                         Text("Only left : ${list[index]["stock"]}".toString(),style: TextStyle(
                                             color: Colors.grey
                                         ),),
-                                        SizedBox(height: 10,),
+                                        const SizedBox(height: 10,),
                                       ],
                                     ),
                                   ),
@@ -334,14 +334,14 @@ class _WishlistPageState extends State<WishlistPage> {
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text("Item Moved to Cart"),
+        content: const Text("Item Moved to Cart"),
         backgroundColor: Colors.black,
         action: SnackBarAction(
           label: "Go to Cart",
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (_) => cartPage()),
+              MaterialPageRoute(builder: (_) => const cartPage()),
             );
           },
         ),
@@ -354,12 +354,12 @@ class _WishlistPageState extends State<WishlistPage> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text("Remove item"),
+        title: const Text("Remove item"),
         content: Text("Remove \"$title\" from wishlist?"),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text("Cancel"),
+            child: const Text("Cancel"),
           ),
           TextButton(
             onPressed: () async {
@@ -382,26 +382,25 @@ class _WishlistPageState extends State<WishlistPage> {
               });
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text("Item removed from wishlist"),
+                  content: const Text("Item removed from wishlist"),
                   action: SnackBarAction(
                     label: "UNDO",
                     textColor: Colors.yellow,
                     onPressed: () async {
                       wishlist.add(id);
                       await prefs.setStringList('wishlist', wishlist);
-
                       setState(() {
                         wishlistProducts.insert(0, removedProduct);
                       });
                     },
                   ),
-                  duration: Duration(seconds: 3),
+                  duration: const Duration(seconds: 3),
                 ),
               );
             },
-            child: Text(
+            child: const Text(
               "Remove",
-              style: TextStyle(color: Colors.red),
+              style: const TextStyle(color: Colors.red),
             ),
           ),
         ],
@@ -413,11 +412,11 @@ class _WishlistPageState extends State<WishlistPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("My Wishlist"),
+        title: const Text("My Wishlist"),
         backgroundColor: Colors.blue.shade100,
       ),
       body: isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: const CircularProgressIndicator())
           : wishlistProducts.isEmpty
           ? Center(
         child: Column(
@@ -425,7 +424,7 @@ class _WishlistPageState extends State<WishlistPage> {
           children: [
             TweenAnimationBuilder<double>(
               tween: Tween(begin: 0.8, end: 1.2),
-              duration: Duration(milliseconds: 800),
+              duration: const Duration(milliseconds: 800),
               curve: Curves.easeInOut,
               builder: (context, value, child) {
                 return Transform.scale(
@@ -433,22 +432,22 @@ class _WishlistPageState extends State<WishlistPage> {
                   child: child,
                 );
               },
-              child: Icon(
+              child: const Icon(
                 Icons.favorite_border,
                 color: Colors.red,
                 size: 100,
               ),
             ),
-            SizedBox(height: 20),
-            Text(
+            const SizedBox(height: 20),
+            const Text(
               "Your wishlist is empty",
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 8),
-            Text(
+            const SizedBox(height: 8),
+            const Text(
               "Tap ❤️ to save your favorite items",
               style: TextStyle(color: Colors.grey),
             ),
@@ -471,9 +470,9 @@ class _WishlistPageState extends State<WishlistPage> {
                   );
                 },
                 child: Card(
-                  margin: EdgeInsets.all(8),
+                  margin: const EdgeInsets.all(8),
                   child: Padding(
-                    padding: EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center, // center vertically
                       children: [
@@ -483,7 +482,7 @@ class _WishlistPageState extends State<WishlistPage> {
                           height: 80,
                           fit: BoxFit.cover,
                         ),
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         Expanded(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center, // center text vertically
@@ -495,7 +494,7 @@ class _WishlistPageState extends State<WishlistPage> {
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                               ),
-                              SizedBox(height: 5),
+                              const SizedBox(height: 5),
                               Text(
                                 "₹ ${product['price']}",
                                 style: TextStyle(
@@ -508,11 +507,11 @@ class _WishlistPageState extends State<WishlistPage> {
                           mainAxisSize: MainAxisSize.min, // only take needed space
                           children: [
                             IconButton(
-                              icon: Icon(Icons.add_shopping_cart_rounded, color: Colors.green),
+                              icon: const Icon(Icons.add_shopping_cart_rounded, color: Colors.green),
                               onPressed: () => moveToCart(product),
                             ),
                             IconButton(
-                              icon: Icon(Icons.favorite, color: Colors.red),
+                              icon: const Icon(Icons.favorite, color: Colors.red),
                               onPressed: () => confirmRemoveFromWishlist(
                                   context,
                                   product['id'].toString(),

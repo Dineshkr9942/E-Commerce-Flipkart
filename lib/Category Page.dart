@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flipkart/Cart%20Page.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'Product Page.dart';
@@ -86,7 +87,7 @@ class _categoryPageState extends State<categoryPage> {
         isLoading = false;
       });
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Failed to load categories")),
+        const SnackBar(content: const Text("Failed to load categories")),
       );
     }
   }
@@ -95,16 +96,31 @@ class _categoryPageState extends State<categoryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Categories"),
+        title: const Text("Categories"),
+        actions: [
+          IconButton(
+            onPressed: () {
+
+            }, icon: const Icon(Icons.search),),
+          IconButton(
+            onPressed: () {
+
+            }, icon: const Icon(Icons.camera_alt),),
+          IconButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>cartPage()));
+            }, icon: const Icon(Icons.shopping_cart),),
+          SizedBox(width: 5,)
+        ],
         backgroundColor: Colors.blue.shade100,
       ),
       body: isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: const CircularProgressIndicator())
           : Padding(
         padding: const EdgeInsets.all(8.0),
         child: GridView.builder(
           padding: const EdgeInsets.all(8),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             childAspectRatio: 0.75,
             crossAxisSpacing: 20,
@@ -140,7 +156,7 @@ class _categoryPageState extends State<categoryPage> {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      SizedBox(height: 10,),
+                      const SizedBox(height: 10,),
                       Text(
                         cat.toUpperCase(),
                         textAlign: TextAlign.center,
@@ -194,7 +210,7 @@ class _CategoryProductsPageState extends State<CategoryProductsPage> {
         isLoading = false;
       });
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Failed to load products")),
+        const SnackBar(content: const Text("Failed to load products")),
       );
     }
   }
@@ -207,12 +223,12 @@ class _CategoryProductsPageState extends State<CategoryProductsPage> {
         backgroundColor: Colors.blue.shade100,
       ),
       body: isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: const CircularProgressIndicator())
           : products.isEmpty
-          ? Center(child: Text("No products found"))
+          ? const Center(child: const Text("No products found"))
           : GridView.builder(
         padding: const EdgeInsets.all(8),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 0.62,
           crossAxisSpacing: 8,
@@ -257,15 +273,14 @@ class _CategoryProductsPageState extends State<CategoryProductsPage> {
                     ),
                   ),
                   Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 6),
+                    padding: const EdgeInsets.symmetric(horizontal: 6),
                     child: Text(
                       "₹${item['price']}",
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontWeight: FontWeight.bold),
                     ),
                   ),
-                  SizedBox(height: 6),
+                  const SizedBox(height: 6),
                 ],
               ),
             ),

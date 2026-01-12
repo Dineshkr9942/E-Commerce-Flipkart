@@ -85,17 +85,17 @@ class _ordersPageState extends State<ordersPage> {
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        title: Text("Cancel Order"),
-        content: Text("Are you sure you want to cancel this order?"),
+        title: const Text("Cancel Order"),
+        content: const Text("Are you sure you want to cancel this order?"),
         actions: [
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-            child: Text("No",style: TextStyle(color: Colors.white),),
+            child: const Text("No",style: const TextStyle(color: Colors.white),),
             onPressed: () => Navigator.pop(context),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-            child: Text("Yes, Cancel", style: TextStyle(color: Colors.white)),
+            child: const Text("Yes, Cancel", style: const TextStyle(color: Colors.white)),
             onPressed: () {
               Navigator.pop(context);
               cancelOrder(order);
@@ -120,7 +120,7 @@ class _ordersPageState extends State<ordersPage> {
     await prefs.setStringList('cart', cart);
 
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text("Items added to cart")),
+      const SnackBar(content: const Text("Items added to cart")),
     );
   }
 
@@ -138,28 +138,28 @@ class _ordersPageState extends State<ordersPage> {
       physics: NeverScrollableScrollPhysics(),
       controlsBuilder: (_, __) => SizedBox.shrink(),
       steps: const [
-        Step(title: Text("Placed"), content: SizedBox()),
-        Step(title: Text("Shipped"), content: SizedBox()),
-        Step(title: Text("Delivered"), content: SizedBox()),
+        const Step(title: const Text("Placed"), content: const SizedBox()),
+        const Step(title: const Text("Shipped"), content: const SizedBox()),
+        const Step(title: const Text("Delivered"), content: const SizedBox()),
       ],
     );
   }
 
   Widget _emptyOrders() {
-    return Center(
+    return const Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.receipt_long, size: 90, color: Colors.grey),
-          SizedBox(height: 16),
-          Text(
+          const Icon(Icons.receipt_long, size: 90, color: Colors.grey),
+          const SizedBox(height: 16),
+          const Text(
             "No orders yet",
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 6),
-          Text(
+          const SizedBox(height: 6),
+          const Text(
             "Your placed orders will appear here",
-            style: TextStyle(color: Colors.grey),
+            style: const TextStyle(color: Colors.grey),
           ),
         ],
       ),
@@ -170,11 +170,11 @@ class _ordersPageState extends State<ordersPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("My Orders"),
+        title: const Text("My Orders"),
         backgroundColor: Colors.blue.shade100,
       ),
       body: isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: const CircularProgressIndicator())
           : orders.isEmpty
           ? _emptyOrders()
           : ListView.builder(
@@ -186,16 +186,16 @@ class _ordersPageState extends State<ordersPage> {
             child: ExpansionTile(
               title: Text(
                 "Order ID: ${order.orderId}",
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               subtitle: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     "₹${order.totalAmount} • ${order.paymentMethod}",
-                    style: TextStyle(color: Colors.green),
+                    style: const TextStyle(color: Colors.green),
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 4),
                   Text(
                     order.isEmi ? "EMI Order" : "Full Payment",
                     style: TextStyle(
@@ -220,7 +220,7 @@ class _ordersPageState extends State<ordersPage> {
                       Text(
                         "Delivery by: ${DateFormat('dd MMM yyyy').format(order.deliveryDate)}",
                       ),
-                      Divider(),
+                      const Divider(),
                       ...order.items.map((item) {
                         return InkWell(
                           onTap: () async {
@@ -240,26 +240,26 @@ class _ordersPageState extends State<ordersPage> {
                               contentPadding: EdgeInsets.zero,
                               leading: Image.network(item['thumbnail'],width: 50),
                               title: Text(item['title'], ),
-                              trailing: Text("₹${item['price']}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
+                              trailing: Text("₹${item['price']}",style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 15),),
                             ),
                           ),
                         );
                       }).toList(),
-                      Divider(),
+                      const Divider(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           if (order.status == "Placed")
                           TextButton.icon(
                               style: TextButton.styleFrom(backgroundColor: Colors.red),
-                              icon: Icon(Icons.cancel, color: Colors.white),
-                              label: Text("Cancel",style: TextStyle(color: Colors.white),),
+                              icon: const Icon(Icons.cancel, color: Colors.white),
+                              label: const Text("Cancel",style: const TextStyle(color: Colors.white),),
                               onPressed: () => showCancelDialog(order),
                             ),
                           TextButton.icon(
                             style: TextButton.styleFrom(backgroundColor: Colors.blue),
-                            icon: Icon(Icons.refresh,color: Colors.white,),
-                            label: Text("Reorder",style: TextStyle(color: Colors.white)),
+                            icon: const Icon(Icons.refresh,color: Colors.white,),
+                            label: const Text("Reorder",style: const TextStyle(color: Colors.white)),
                             onPressed: () => reorder(order),
                           ),
                         ],
